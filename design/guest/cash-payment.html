@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kopi Tempo - Pembayaran Tunai</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fdf8f6',
+                            100: '#f2e8e5',
+                            200: '#eaddd7',
+                            300: '#e0cec7',
+                            400: '#d2bab0',
+                            500: '#a37c68', // Brand primary (Amber/Brown)
+                            600: '#8c6551',
+                            700: '#755140',
+                            800: '#5c3d2e',
+                            900: '#472d20',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen">
+    <div class="max-w-md mx-auto min-h-screen bg-slate-50 relative flex flex-col p-6 items-center justify-center text-center">
+        
+        <div class="w-full bg-white rounded-3xl p-8 shadow-sm border border-slate-200 flex flex-col items-center">
+            
+            <!-- Graphic element -->
+            <div class="w-20 h-20 rounded-full bg-amber-50 text-amber-500 flex items-center justify-center mb-6">
+                <i data-lucide="wallet" class="w-10 h-10"></i>
+            </div>
+            
+            <h1 class="text-xl font-bold text-slate-800 mb-2">Pesanan Terkirim!</h1>
+            <p class="text-sm text-slate-500 mb-8 max-w-[280px]">
+                Silakan segera menuju <strong>Kasir</strong> untuk menyelesaikan pembayaran secara tunai.
+            </p>
+            
+            <!-- Amount -->
+            <div class="w-full bg-slate-50 border border-slate-200 border-dashed rounded-2xl p-5 mb-8">
+                <p class="text-sm text-slate-500 mb-1">Total yang harus dibayar</p>
+                <p class="text-3xl font-bold text-primary-800">Rp 27.972</p>
+                <div class="mt-4 pt-4 border-t border-slate-200">
+                    <p class="text-xs text-slate-500">ID Pesanan: <span class="font-bold text-slate-700">ORD-10A2B</span></p>
+                    <p class="text-xs text-slate-500">Meja: <span class="font-bold text-slate-700">12</span></p>
+                </div>
+            </div>
+
+            <!-- Wait Info -->
+            <div class="flex items-start gap-4 p-4 rounded-xl bg-blue-50 text-left border border-blue-100">
+                <i data-lucide="info" class="w-5 h-5 text-blue-500 shrink-0 mt-0.5"></i>
+                <p class="text-xs text-blue-800 leading-relaxed">
+                    Pesanan Anda (Dine-in) tidak akan kami proses sebelum pembayaran terkonfirmasi di sistem Kasir.
+                </p>
+            </div>
+            
+        </div>
+        
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

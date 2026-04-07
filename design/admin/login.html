@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Kasir - Kopi Tempo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fdf8f6',
+                            100: '#f2e8e5',
+                            200: '#eaddd7',
+                            300: '#e0cec7',
+                            400: '#d2bab0',
+                            500: '#a37c68', // Brand primary
+                            600: '#8c6551',
+                            700: '#755140',
+                            800: '#5c3d2e',
+                            900: '#472d20',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex items-center justify-center p-4">
+    
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden">
+        
+        <!-- Header -->
+        <div class="bg-primary-900 p-8 text-center text-white relative flex flex-col items-center">
+            <!-- Background pattern -->
+            <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#ffffff 1px, transparent 1px); background-size: 16px 16px;"></div>
+            
+            <div class="relative z-10 w-16 h-16 bg-white/10 rounded-2xl backdrop-blur flex items-center justify-center mb-4 border border-white/20">
+                <i data-lucide="coffee" class="w-8 h-8 text-primary-100"></i>
+            </div>
+            <h1 class="text-2xl font-bold relative z-10">Kopi Tempo</h1>
+            <p class="text-primary-200 text-sm mt-1 relative z-10">Sistem Pos & Pemesanan</p>
+        </div>
+
+        <!-- Form -->
+        <div class="p-8">
+            <h2 class="text-xl font-bold text-slate-800 mb-6 font-display">Login Kasir</h2>
+            
+            <form action="dashboard.html" class="space-y-5">
+                <div>
+                    <label for="username" class="block text-sm font-medium text-slate-700 mb-1.5">Username</label>
+                    <div class="relative">
+                        <i data-lucide="user" class="absolute left-3 top-2.5 w-5 h-5 text-slate-400"></i>
+                        <input type="text" id="username" placeholder="Masukkan username" class="w-full pl-10 pr-3 py-2 border border-slate-200 rounded-lg text-sm bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-colors" required>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex justify-between items-center mb-1.5">
+                        <label for="password" class="block text-sm font-medium text-slate-700">Password</label>
+                    </div>
+                    <div class="relative border border-slate-200 rounded-lg bg-slate-50 focus-within:bg-white focus-within:ring-2 focus-within:ring-primary-500/20 focus-within:border-primary-500 overflow-hidden transition-colors">
+                        <i data-lucide="lock" class="absolute left-3 top-2.5 w-5 h-5 text-slate-400"></i>
+                        <input type="password" id="password" placeholder="••••••••" class="w-full pl-10 pr-10 py-2 text-sm bg-transparent outline-none" required>
+                        <button type="button" class="absolute right-3 top-2.5 text-slate-400 hover:text-slate-600 focus:outline-none cursor-pointer">
+                            <i data-lucide="eye" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="pt-2">
+                    <button type="submit" class="w-full bg-primary-800 hover:bg-primary-900 text-white font-medium py-2.5 rounded-lg shadow-sm hover:shadow-md transition-all flex justify-center items-center gap-2 cursor-pointer active:scale-[0.98]">
+                        Masuk <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+
+    <!-- Background Decoration -->
+    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+        <div class="absolute -top-[20%] -right-[10%] w-[50%] h-[50%] rounded-full bg-primary-100/50 blur-3xl"></div>
+        <div class="absolute -bottom-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-slate-200/50 blur-3xl"></div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

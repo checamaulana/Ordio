@@ -1,0 +1,11 @@
+Sesi ini:
+- Fondasi Phase 2 telah diimplementasikan (migrations, enums, models, services, seeders).
+- Validasi runtime terblokir karena PHP CLI tidak tersedia di environment.
+- Fondasi Phase 3 selesai (auth backend/frontend, login page, layout dasar).
+- Fondasi Phase 4 selesai (manajemen menu/kategori/sub-kategori/varian + form/page dasar).
+- Fondasi Phase 5 selesai (manajemen meja + QR route/controller/page dasar).
+- Fondasi Phase 6 selesai (alur customer menu-checkout-order-payment dengan komponen/hook dasar).
+- Fondasi Phase 7 selesai (dashboard pesanan aktif, polling, modal pembayaran cash/QRIS, controller pembayaran).
+- Fondasi Phase 8 selesai (controller + halaman laporan dasar, komponen report chart, placeholder aset QRIS/notifikasi).
+- Todo backend-order-actions selesai: flow takeaway dashboard (create/store), endpoint hapus pesanan, dan reset status meja saat order selesai/dihapus.
+- Todo frontend-takeaway-and-delete selesai: halaman TakeawayCreate sudah fungsional (kategori/menu/detail/cart/pembayaran + submit), dan aksi hapus pesanan aktif dengan konfirmasi + notifikasi berhasil ditambahkan.

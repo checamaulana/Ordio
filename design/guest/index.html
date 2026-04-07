@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kopi Tempo - Menu Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fdf8f6',
+                            100: '#f2e8e5',
+                            200: '#eaddd7',
+                            300: '#e0cec7',
+                            400: '#d2bab0',
+                            500: '#a37c68', // Brand primary (Amber/Brown)
+                            600: '#8c6551',
+                            700: '#755140',
+                            800: '#5c3d2e',
+                            900: '#472d20',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+    <div class="max-w-md mx-auto min-h-screen bg-white relative pb-28 shadow-sm">
+        
+        <!-- Header / Banner -->
+        <header class="relative h-48 bg-slate-900 flex items-end">
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80" alt="Coffee Shop" class="absolute inset-0 w-full h-full object-cover opacity-60">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent"></div>
+            <div class="relative z-10 w-full p-4 flex justify-between items-end">
+                <div>
+                    <h1 class="text-2xl font-bold text-white mb-1">Kopi Tempo</h1>
+                    <p class="text-sm text-slate-300 flex items-center gap-1">
+                        <i data-lucide="map-pin" class="w-4 h-4"></i> Meja 12
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Categories Tabs -->
+        <div class="sticky top-0 bg-white/90 backdrop-blur-md z-40 border-b border-slate-200 hide-scroll overflow-x-auto">
+            <div class="flex p-4 gap-3 bg-white/80">
+                <button class="px-5 py-2 rounded-full bg-primary-800 text-white text-sm font-medium whitespace-nowrap shadow-sm transition-colors cursor-pointer">Best Seller</button>
+                <button class="px-5 py-2 rounded-full bg-slate-100 text-slate-600 text-sm font-medium whitespace-nowrap hover:bg-slate-200 transition-colors cursor-pointer">Kopi</button>
+                <button class="px-5 py-2 rounded-full bg-slate-100 text-slate-600 text-sm font-medium whitespace-nowrap hover:bg-slate-200 transition-colors cursor-pointer">Non Kopi</button>
+                <button class="px-5 py-2 rounded-full bg-slate-100 text-slate-600 text-sm font-medium whitespace-nowrap hover:bg-slate-200 transition-colors cursor-pointer">Camilan</button>
+            </div>
+        </div>
+
+        <!-- Menu List -->
+        <main class="p-4 space-y-6">
+            <!-- Category Section -->
+            <section>
+                <h2 class="text-lg font-bold text-slate-800 mb-4">Best Seller</h2>
+                <div class="space-y-4">
+                    
+                    <!-- Item 1 -->
+                    <div class="flex gap-4 p-3 bg-white rounded-xl border border-slate-200 shadow-sm hover:border-primary-300 transition-colors cursor-pointer group">
+                        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=200&q=80" alt="Kopi Susu Gula Aren" class="w-24 h-24 object-cover rounded-lg">
+                        <div class="flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-start">
+                                    <h3 class="font-semibold text-slate-900 group-hover:text-primary-700 transition-colors">Kopi Susu Tempo</h3>
+                                    <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">Terlaris</span>
+                                </div>
+                                <p class="text-sm text-slate-500 mt-1">Kopi susu dengan gula aren khas kental.</p>
+                            </div>
+                            <div class="flex justify-between items-center mt-2">
+                                <span class="font-bold text-slate-900">Rp 22.000</span>
+                                <button class="w-8 h-8 rounded-full bg-primary-50 text-primary-700 flex items-center justify-center hover:bg-primary-100 transition-colors cursor-pointer">
+                                    <i data-lucide="plus" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="flex gap-4 p-3 bg-white rounded-xl border border-slate-200 shadow-sm hover:border-primary-300 transition-colors cursor-pointer group">
+                        <img src="https://images.unsplash.com/photo-1579992357154-faf4bde95b3d?auto=format&fit=crop&w=200&q=80" alt="Matcha Latte" class="w-24 h-24 object-cover rounded-lg">
+                        <div class="flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-semibold text-slate-900 group-hover:text-primary-700 transition-colors">Matcha Latte</h3>
+                                <div class="flex items-center gap-2 mt-1">
+                                    <span class="text-xs text-red-500 line-through">Rp 28.000</span>
+                                    <span class="bg-red-50 text-red-600 text-[10px] font-bold px-1.5 rounded-sm">-10%</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center mt-2">
+                                <span class="font-bold text-slate-900">Rp 25.200</span>
+                                <!-- Item already in cart UI -->
+                                <div class="flex items-center gap-3 bg-slate-50 border border-slate-200 rounded-full px-2 py-1">
+                                    <button class="w-6 h-6 rounded-full bg-white shadow-sm flex items-center justify-center text-slate-600 cursor-pointer">
+                                        <i data-lucide="minus" class="w-3 h-3"></i>
+                                    </button>
+                                    <span class="text-sm font-medium w-3 text-center">1</span>
+                                    <button class="w-6 h-6 rounded-full bg-primary-600 shadow-sm flex items-center justify-center text-white cursor-pointer hover:bg-primary-700 transition-colors">
+                                        <i data-lucide="plus" class="w-3 h-3"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 (Out of stock) -->
+                    <div class="flex gap-4 p-3 bg-slate-50 rounded-xl border border-slate-100 opacity-60 pointer-events-none">
+                        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=200&q=80" alt="Croissant" class="w-24 h-24 object-cover rounded-lg grayscale">
+                        <div class="flex-1 flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-start">
+                                    <h3 class="font-semibold text-slate-900">Butter Croissant</h3>
+                                    <span class="bg-slate-200 text-slate-600 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">Habis</span>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center mt-2">
+                                <span class="font-bold text-slate-500">Rp 18.000</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+
+        <!-- Floating Cart Button -->
+        <div class="fixed bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-white via-white to-transparent z-50">
+            <div class="max-w-md mx-auto">
+                <a href="order-summary.html" class="flex items-center justify-between w-full bg-primary-800 text-white rounded-xl p-4 shadow-lg hover:bg-primary-900 transition-colors cursor-pointer group">
+                    <div class="flex items-center gap-3">
+                        <div class="relative">
+                            <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+                            <span class="absolute -top-1 -right-2 bg-red-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-white">1</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-xs text-primary-200">Total Pesanan</span>
+                            <span class="text-sm font-bold">1 Item</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-end">
+                        <span class="font-bold">Rp 25.200</span>
+                        <span class="text-[10px] text-primary-200 flex items-center gap-1 group-hover:translate-x-1 transition-transform">Lihat Keranjang <i data-lucide="chevron-right" class="w-3 h-3"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

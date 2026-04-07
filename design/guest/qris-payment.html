@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kopi Tempo - Pembayaran QRIS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fdf8f6',
+                            100: '#f2e8e5',
+                            200: '#eaddd7',
+                            300: '#e0cec7',
+                            400: '#d2bab0',
+                            500: '#a37c68', // Brand primary (Amber/Brown)
+                            600: '#8c6551',
+                            700: '#755140',
+                            800: '#5c3d2e',
+                            900: '#472d20',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen">
+    <div class="max-w-md mx-auto min-h-screen bg-slate-50 relative flex flex-col p-6 items-center justify-center text-center">
+        
+        <div class="w-full bg-white rounded-3xl p-6 shadow-sm border border-slate-200">
+            <!-- Header QRIS -->
+            <div class="flex justify-center mb-6">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Logo_QRIS.svg" alt="QRIS" class="h-8">
+            </div>
+            
+            <h1 class="text-xl font-bold text-slate-800 mb-1">Kopi Tempo</h1>
+            <p class="text-xs text-slate-500 mb-6">NMID: ID10293847561</p>
+            
+            <!-- Amount -->
+            <div class="bg-slate-50 rounded-xl p-4 mb-6 border border-slate-100 border-dashed">
+                <p class="text-sm text-slate-500 mb-1">Total Pembayaran</p>
+                <p class="text-3xl font-bold text-primary-800">Rp 27.972</p>
+            </div>
+            
+            <!-- QR Code Dummy -->
+            <div class="aspect-square bg-white border-2 border-slate-100 rounded-2xl p-4 flex items-center justify-center relative mb-6">
+                <!-- Gunakan gambar QR statis placeholder -->
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=PembayaranQRISKopiTempo27972" alt="QR Code QRIS Kopi Tempo" class="w-full h-full object-contain">
+                
+                <!-- Corner accents -->
+                <div class="absolute top-0 left-0 w-6 h-6 border-t-4 border-l-4 border-primary-500 rounded-tl-xl -ml-1 -mt-1"></div>
+                <div class="absolute top-0 right-0 w-6 h-6 border-t-4 border-r-4 border-primary-500 rounded-tr-xl -mr-1 -mt-1"></div>
+                <div class="absolute bottom-0 left-0 w-6 h-6 border-b-4 border-l-4 border-primary-500 rounded-bl-xl -ml-1 -mb-1"></div>
+                <div class="absolute bottom-0 right-0 w-6 h-6 border-b-4 border-r-4 border-primary-500 rounded-br-xl -mr-1 -mb-1"></div>
+            </div>
+
+            <p class="text-sm text-slate-500 mb-8 max-w-[250px] mx-auto">
+                Silakan scan QR Code ini menggunakan aplikasi M-Banking atau E-Wallet Anda.
+            </p>
+            
+            <!-- Action buttons -->
+            <div class="space-y-3">
+                <button onclick="alert('Bukti pembayaran Anda diproses dan kasir akan mengonfirmasinya dalam waktu sesaat. Terima kasih.')" class="w-full bg-primary-800 text-white rounded-xl py-3.5 px-4 font-bold text-sm shadow-md hover:bg-primary-900 transition-all cursor-pointer flex justify-center items-center gap-2 active:scale-[0.98]">
+                    <i data-lucide="check-circle" class="w-4 h-4"></i> Saya Sudah Bayar
+                </button>
+                <p class="text-[10px] text-slate-400 leading-tight">Pastikan transaksi berhasil di aplikasi Anda sebelum menekan tombol di atas.</p>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

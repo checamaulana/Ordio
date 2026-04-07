@@ -1,0 +1,454 @@
+================================================================================
+FRONTEND GAP ANALYSIS AUDIT RESULTS
+sistem-pemesanan-qr (Laravel + Inertia + React)
+Todo ID: gap-analysis-frontend
+Audit Date: January 18, 2025
+================================================================================
+
+EXECUTIVE SUMMARY
+================================================================================
+
+Current Frontend Completion: ~15%
+
+COMPLETED:
+ Project setup (80%)
+   - Laravel 12 + Inertia.js + React 19 + TypeScript
+   - Tailwind CSS v4 configured
+   - Basic utilities and type definitions
+
+NOT STARTED:
+ Database & Backend Models (0%)
+   - No migrations, enums, or models beyond User
+   
+ Frontend Pages (0%)
+   - No customer pages (menu, checkout, payment, success, unpaid, error)
+   - No dashboard pages (orders, menu mgmt, tables, reports)
+   - No authentication pages
+   
+ Reusable Components (0%)
+   - shadcn/ui not initialized
+   - No component folder structure
+   
+ Custom Hooks (0%)
+   - No use-polling, use-notification, use-cart
+   
+ Routes & Integration (0%)
+   - No routes defined
+   - No backend controllers
+
+================================================================================
+COMPLETED COMPONENTS (Phase 0 - Partial)
+================================================================================
+
+Infrastructure Files:
+ /resources/views/app.blade.php - Blade template root
+ /resources/js/app.tsx - React/Inertia entry point
+ /resources/js/bootstrap.ts - Bootstrap (auto-generated)
+ /resources/css/app.css - Tailwind directives
+ /resources/js/lib/utils.ts - cn() utility function
+ /resources/js/types/auth.ts - Auth types (basic)
+ /resources/js/types/index.ts - Type exports
+ package.json - All dependencies installed
+ composer.json - Backend dependencies configured
+
+Build System:
+ Vite configured (vite.config.ts)
+ TypeScript configured (tsconfig.json)
+ Tailwind CSS v4 configured (app.css)
+ Environment (.env) configured
+
+Status: 80% complete for Phase 0
+
+================================================================================
+CRITICAL GAPS (Blocking All Pages)
+================================================================================
+
+1. DATABASE & BACKEND MODELS (Phase 1) - 0% COMPLETE
+   MISSING:
+   ❌ 9 database migrations:
+      - categories, sub_categories, menu_items
+      - variant_groups, variant_options
+      - tables, orders, order_items, order_item_variants
+   
+   ❌ 5 enums (OrderStatus, PaymentStatus, PaymentMethod, DiscountType, TableStatus)
+   
+   ❌ 10 models (Category, SubCategory, MenuItem, VariantGroup, VariantOption,
+     Table, Order, OrderItem, OrderItemVariant, plus User update)
+   
+   ❌ Services (QrCodeService, OrderService, PaymentService, ReportService)
+   
+   ❌ Seeders (UserSeeder with admin/password, TableSeeder with 20 tables + QR)
+   
+   IMPACT: Blocks ALL frontend pages from working
+   EFFORT: 2-3 days
+
+2. AUTHENTICATION (Phase 2) - 0% COMPLETE
+   MISSING:
+   ❌ LoginController.php (create, store, destroy actions)
+   ❌ LoginRequest.php (form validation)
+   ❌ Login.tsx page
+   ❌ Auth routes (login, logout, redirect)
+   ❌ Middleware checks for protected routes
+   
+   IMPACT: Can't access dashboard
+   EFFORT: 1 day
+
+3. UI COMPONENTS (shadcn/ui) - 0% COMPLETE
+   MISSING:
+   ❌ shadcn/ui NOT INITIALIZED
+   ❌ No UI components (button, card, dialog, input, sheet, table, etc.)
+   ❌ No form components
+   
+   IMPACT: Can't build any visual page
+   EFFORT: 2-3 hours
+   ACTION: Run: npx shadcn-ui@latest add [components]
+
+4. LAYOUTS & NAVIGATION - 0% COMPLETE
+   MISSING:
+   ❌ dashboard-layout.tsx (sidebar + main content)
+   ❌ customer-layout.tsx (mobile header + floating cart)
+   ❌ sidebar.tsx (navigation menu)
+   ❌ header.tsx (dashboard header)
+   ❌ app-logo.tsx (branding)
+   
+   IMPACT: Pages have no structure/navigation
+   EFFORT: 1 day
+
+================================================================================
+MISSING CUSTOMER PAGES (Phase 3) - 0% COMPLETE
+================================================================================
+
+6 Pages + 8 Components:
+ /meja/{nomor}/menu - Browse menu, select items
+ /meja/{nomor}/checkout - Confirm order, choose payment method
+ /meja/{nomor}/pembayaran - QRIS payment display
+ /meja/{nomor}/sukses - Order successful confirmation
+ /meja/{nomor}/belum-bayar - Unpaid order blocker
+ Error page - Table not found
+
+Components:
+ menu-category-tabs.tsx
+ menu-item-card.tsx
+ menu-item-detail.tsx (modal/sheet)
+ cart-sheet.tsx (bottom drawer)
+ cart-item.tsx
+ order-summary.tsx
+ payment-method-selector.tsx
+ qris-payment-view.tsx
+
+Hooks:
+ use-cart.ts (state + localStorage persistence)
+ use-notification.ts (toast)
+
+Backend:
+ Customer/MenuController.php
+ Customer/OrderController.php
+ Services/OrderService.php
+ Routes: /meja/* endpoints
+
+EFFORT: 3-4 days
+
+================================================================================
+MISSING DASHBOARD PAGES (Phases 4-7) - 0% COMPLETE
+================================================================================
+
+Menu Management (Phase 4):
+ Categories.tsx - Category & subcategory CRUD
+ MenuItems.tsx - Item menu CRUD with toggle
+ menu-form.tsx, category-form.tsx, variant-form.tsx
+Backend: 4 controllers + 4 request validation classes
+Effort: 2 days
+
+Table Management (Phase 5):
+ Tables.tsx - Table CRUD + QR download/view
+ table-form.tsx, qr-code-modal.tsx
+Backend: TableController.php
+Effort: 1 day
+
+Order Management (Phase 6):
+ Orders.tsx - Active orders with polling
+ TakeawayCreate.tsx - POS interface for walk-in orders
+ order-card.tsx, order-detail-modal.tsx
+ payment-cash-modal.tsx (input cash, calc change)
+ payment-qris-modal.tsx (confirm payment)
+ notification-popup.tsx (sound + toast)
+Hooks: use-polling.ts (10-sec refresh), use-notification.ts
+Backend: OrderController.php, PaymentController.php, Services/PaymentService.php
+Effort: 2-3 days
+
+Reports (Phase 7):
+ ReportDaily.tsx, ReportWeekly.tsx, ReportMonthly.tsx
+ ReportTopItems.tsx, ReportRevenue.tsx
+ report-chart.tsx (Recharts wrapper)
+Backend: ReportController.php, Services/ReportService.php
+External: Install recharts library
+Effort: 1.5 days
+
+TOTAL: 6-8 days for all dashboard features
+
+================================================================================
+MISSING TYPE DEFINITIONS & UTILITIES - 30% COMPLETE
+================================================================================
+
+Partially Complete:
+ resources/js/types/index.ts - Basic structure exists
+ resources/js/lib/utils.ts - Only cn() function exists
+
+Missing:
+ resources/js/types/models.ts - ALL interfaces (Category, MenuItem, Order, CartItem, etc.)
+   - Required for type safety throughout app
+   - Defined in FRONTEND_GUIDELINES section 3
+   
+ resources/js/lib/constants.ts - Missing:
+   - TAX_RATE = 0.11
+   - POLLING_INTERVAL = 10000
+   - MAX_IMAGE_SIZE, ACCEPTED_IMAGE_TYPES
+   
+ resources/js/lib/price.ts - Missing:
+   - calculateItemPrice()
+   - calculateTax()
+   - Used throughout cart + checkout
+
+EFFORT: 2 hours
+
+================================================================================
+MISSING ROUTES & INTEGRATION - 0% COMPLETE
+================================================================================
+
+Routes Not Defined:
+ Customer routes:
+   GET  /meja/{nomor}/menu
+   GET  /meja/{nomor}/checkout
+   POST /meja/{nomor}/orders
+   GET  /meja/{nomor}/pembayaran
+   etc.
+
+ Dashboard routes:
+   GET  /dashboard/orders
+   GET  /dashboard/menu, /dashboard/categories
+   GET  /dashboard/meja
+   POST /dashboard/pesanan/takeaway
+   POST /dashboard/pembayaran/cash
+   etc.
+
+ Auth routes:
+   GET  /login
+   POST /login
+   POST /logout
+
+File to update: routes/web.php (currently only has welcome page)
+
+EFFORT: 1 hour (once controllers are ready)
+
+================================================================================
+MISSING STATIC ASSETS - 0% COMPLETE
+================================================================================
+
+ public/sounds/notification.mp3 - Notification sound for new orders
+   Status: Needs to be acquired from designer/audio engineer
+   Placeholder: Can use temporary sound for development
+   
+ public/images/qris.png - QRIS QR code image for cafe
+   Status: Needs QRIS QR from cafe owner
+   Placeholder: Can use generic QRIS QR for development
+
+EFFORT: 2-3 hours (external - waiting on assets)
+
+================================================================================
+MISSING LOCALIZATION - 5% COMPLETE
+================================================================================
+
+ resources/lang/id/messages.php - Indonesian UI strings
+ resources/lang/id/validation.php - Indonesian validation messages
+ app.blade.php needs: lang="id"
+
+Currently: All text hardcoded in English
+
+EFFORT: 1 day (once pages are built)
+
+================================================================================
+PRIORITY & DEPENDENCY CHAIN
+================================================================================
+
+CRITICAL PATH (Must complete in order):
+
+Day 1-2: PHASE 0 (Setup)
+  → Initialize shadcn/ui (2-3 hours)
+  → Create TypeScript models.ts (1 hour)
+  → Create utility functions (1 hour)
+
+Day 3-5: PHASE 1 (Database - BLOCKING ALL PAGES)
+  → Create 9 migrations (1 day)
+  → Create 10 models + relationships (1 day)
+  → Create QrCodeService + seeders (3-4 hours)
+
+Day 6: PHASE 2 (Auth & Layouts)
+  → Login system (4-5 hours)
+  → Layouts & navigation (3-4 hours)
+
+Day 7-10: PHASE 3 (Customer Pages)
+  → Menu page (1.5 days)
+  → Cart hook + components (1 day)
+  → Checkout + payment flow (1.5 days)
+
+Day 11-12: PHASE 4 & 5 (Can run parallel)
+  → Menu management CRUD (1 day)
+  → Table management CRUD (1 day)
+
+Day 13-14: PHASE 6 (Orders & Payment)
+  → Order management + polling (1 day)
+  → Payment processing (1 day)
+  → Takeaway orders (1 day)
+
+Day 15-16: PHASE 7 (Reports)
+  → All report pages + charts (1.5 days)
+
+Day 17: PHASE 8 (Localization & Polish)
+  → Localization (1 day)
+  → Static assets (2-3 hours)
+
+TOTAL ESTIMATED TIME: 15-18 days (1 developer) or 12-14 days (2 developers with parallelization)
+
+================================================================================
+FILE COUNT SUMMARY
+================================================================================
+
+Files to Create/Update: ~116 total
+
+Frontend (TypeScript/React):
+  - Pages: 11 (all ❌)
+  - Components: 35+ (all ❌)
+  - Hooks: 3 (all ❌)
+  - Layouts: 2 (all ❌)
+  - Types: 1 file (⚠️ partial) + 2 new
+  - Lib utilities: 2 new files
+  Total: ~54 files
+
+Backend (PHP):
+  - Controllers: 11 (all ❌)
+  - Models: 10 (all ❌)
+  - Migrations: 9 (all ❌)
+  - Services: 4 (all ❌)
+  - Form Requests: 15+ (all ❌)
+  - Enums: 5 (all ❌)
+  - Seeders: 2 (all ❌)
+  Total: ~45+ files
+
+Config & Assets:
+  - Routes: 1 (❌)
+  - Views: 1 (✅)
+  - CSS: 1 (✅)
+  - Config: 0 new
+  - Assets: 2 (❌)
+  - Localization: 2 (❌)
+  Total: ~6 files
+
+GRAND TOTAL: ~105-116 files
+
+================================================================================
+BLOCKERS & AMBIGUITIES
+================================================================================
+
+BLOCKERS (Work can't proceed without resolving):
+
+1. No database schema
+   - Severity: CRITICAL
+   - Impact: All pages need to read/write data
+   - Resolution: Create migrations + seed data (Phase 1)
+   - Timeline: Must be done before any page development
+
+2. No UI component library
+   - Severity: CRITICAL  
+   - Impact: Can't build any visual interface
+   - Resolution: Initialize shadcn/ui
+   - Timeline: 2-3 hours
+
+3. No backend controllers/services
+   - Severity: CRITICAL
+   - Impact: Frontend has no API to call
+   - Resolution: Implement Phase 1 + controllers for each page
+   - Timeline: 2-3 days concurrent with frontend
+
+AMBIGUITIES (Need clarification):
+
+1. Menu image storage path
+   - Question: Should be storage/app/public/menu/ or public/menu/?
+   - Assumption: storage/app/public/menu/ per IMPLEMENTATION_PLAN
+   - Impact: MenuItemController file upload logic
+
+2. QR Code URL format
+   - Question: Should QR point to /meja/{number}/menu or full table URL?
+   - Assumption: {APP_URL}/meja/{number}/menu
+   - Impact: QrCodeService.generate()
+
+3. Theme colors
+   - Status: PRD says "akan ditentukan oleh user kemudian"
+   - Assumption: Using default Tailwind colors
+   - Impact: tailwind.config.ts theme customization
+   - Action: Get color palette from stakeholder before final polish
+
+4. Notification sound file
+   - Status: File doesn't exist
+   - Action: Need to acquire notification.mp3 from audio team
+
+5. QRIS QR code
+   - Status: Cafe's actual QRIS code not available
+   - Action: Get QRIS code from cafe owner for public/images/qris.png
+
+================================================================================
+WHAT WAS COMPLETED
+================================================================================
+
+ Project Setup (Phase 0 - 80%)
+   - Project initialized with all necessary tools
+   - Build pipeline working (Vite)
+   - TypeScript configured
+   - Tailwind CSS ready
+   - React + Inertia.js connected
+   - Basic utilities in place
+   - Type definitions started
+   - Environment configured
+
+ Infrastructure Foundation
+   - Blade root template ready for Inertia
+   - React entry point configured
+   - CSS entry point with Tailwind directives
+   - All NPM dependencies installed
+   - All Composer dependencies installed
+   - Dev tools configured (ESLint, Prettier, TypeScript checking)
+
+ Partial (Types & Utils)
+   - Basic `cn()` utility function exists
+   - Auth types partially defined
+   - Need to complete models.ts, constants.ts, price.ts
+
+STATUS: Ready for Phase 1 (Database) - the real work begins here.
+
+================================================================================
+IS THIS TODO COMPLETE?
+================================================================================
+
+Result: ✅ AUDIT COMPLETED SUCCESSFULLY
+
+What was done:
+ Compared current state with PRD.md
+ Compared current state with IMPLEMENTATION_PLAN.md
+ Compared current state with FRONTEND_GUIDELINES.md
+ Identified complete components: ~15%
+ Identified missing components: ~85%
+ Created prioritized task list with dependencies
+ Identified blockers and ambiguities
+ Provided concrete file paths and effort estimates
+ Recommended execution sequence
+
+Blockers: None that prevent starting work immediately. All blockers are work items that follow a dependency chain.
+
+Recommendations:
+1. Update todo status to 'done' (audit complete)
+2. Create new todos for each phase/task with dependencies
+3. Start with Phase 0 (shadcn/ui + types) - can be done immediately
+4. Start Phase 1 (Database) in parallel - blocks frontend but independent of UI setup
+
+================================================================================
+END OF AUDIT REPORT
+================================================================================

@@ -1,0 +1,9 @@
+{
+    "agents": [
+        "codex",
+        "copilot"
+    ],
+    "herd_mcp": false,
+    "mcp": true,
+    "sail": false
+}
