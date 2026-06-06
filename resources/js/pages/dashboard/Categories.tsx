@@ -73,7 +73,7 @@ export default function Categories({ categories }: CategoriesProps) {
                     ) : null}
                 </div>
 
-                <section className="rounded-lg border border-slate-200 bg-white p-4">
+                <section className="rounded-lg border border-slate-300 bg-white p-4">
                     <h2 className="text-lg font-semibold text-slate-900">Daftar Kategori</h2>
                     <div className="mt-4 space-y-4">
                         {categories.map((category) => (
