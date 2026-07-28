@@ -1,4 +1,4 @@
-# 📋 Sistem Pemesanan QR Code
+# Ordio - QR Code Ordering System
 
 [![Laravel Version](https://img.shields.io/badge/Laravel-12.x-red.svg)](https://laravel.com)
 [![React Version](https://img.shields.io/badge/React-18.x-blue.svg)](https://react.dev)
@@ -7,53 +7,64 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.x-38bdf8.svg)](https://tailwindcss.com)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-
-Sistem ini didesain menggunakan arsitektur modern berkinerja tinggi, memadukan keandalan backend **Laravel** dengan keandalan reaktif frontend **React** melalui jembatan **Inertia.js v2**.
-
----
-
-## ✨ Fitur Utama
-
-### 📱 Sisi Pelanggan (Mobile-First)
-- **Menu Digital Tanpa Login:** Pelanggan dapat langsung memesan dengan memindai QR Code unik di setiap meja.
-- **Kategori & Pencarian Menu:** Antarmuka intuitif untuk menjelajahi kategori utama, sub-kategori, dan menandai produk *Best Seller*.
-- **Kustomisasi Variasi:** Dukungan opsi variasi fleksibel (misal: ukuran, tingkat kemanisan, *extra topping*) yang mempengaruhi harga secara otomatis.
-- **Keranjang Belanja Lokal:** Manajemen keranjang belanja langsung di perangkat pelanggan menggunakan *localStorage* terenkripsi ringan.
-- **Pembayaran Fleksibel:** Integrasi petunjuk pembayaran manual via **Cash (Tunai)** atau **QRIS Statis**.
-
-### 💻 Sisi Kasir / Admin (Desktop-First)
-- **Dashboard Pesanan Real-Time:** Daftar pesanan aktif yang terupdate otomatis setiap 10 detik menggunakan mekanisme polling yang efisien, lengkap dengan notifikasi suara dan visual.
-- **Manajemen Pesanan Takeaway:** Input pesanan walk-in secara langsung oleh kasir melalui Point of Sales (POS) bawaan.
-- **Konfirmasi Pembayaran Dinamis:** Kalkulator kembalian otomatis untuk pembayaran tunai dan konfirmasi pembayaran QRIS sekali klik.
-- **CRUD Menu & Variasi Komprehensif:** Kelola produk, gambar, kategori, ketersediaan stok, diskon per item, hingga opsi variasi dengan mudah.
-- **Manajemen Meja & Generator QR:** Generate QR Code dinamis untuk meja baru secara instan, lengkap dengan opsi unduh QR beresolusi tinggi.
-- **Laporan Penjualan Visual:** Laporan penjualan harian, mingguan, bulanan, statistik pendapatan, dan ranking menu terlaris menggunakan grafik interaktif.
+**Ordio** is a QR code ordering system for restaurants and cafés. It runs a **Laravel** backend and a **React** frontend through the **Inertia.js v2** bridge. Customers order from their phones without installing anything. Staff run the floor from one dashboard.
 
 ---
 
-## 🛠️ Tech Stack & Arsitektur
+## 📖 Table of Contents
 
-Aplikasi ini dibangun menggunakan kombinasi teknologi terbaik di kelasnya untuk memberikan performa maksimal dan efisiensi pengembangan:
+- [Key Features](#-key-features)
+- [Tech Stack & Architecture](#️-tech-stack--architecture)
+- [Data Flow Architecture](#data-flow-architecture)
+- [Installation Guide](#-installation-guide)
+- [Default Login Credentials](#-default-login-credentials)
+- [Testing](#-testing)
+- [License](#-license)
 
-- **Backend:** Laravel 12 (PHP 8.2+) dengan Eloquent ORM.
-- **Frontend:** React 18 & TypeScript (Type Safety terjamin).
-- **Jembatan SPA:** Inertia.js 2.x (menghubungkan Laravel & React tanpa kerumitan API REST/GraphQL).
-- **Styling & UI:** Tailwind CSS & shadcn/ui (berbasis Radix UI yang aksesibel).
-- **Database:** MySQL 8.x.
-- **Package Manager & Runtime:** Bun (kinerja cepat untuk eksekusi skrip frontend).
-- **Visualisasi Data:** Recharts (grafik laporan).
-- **QR Code Generator:** `chillerlan/php-qrcode`.
+---
 
-### Arsitektur Aliran Data
+## ✨ Key Features
+
+### 📱 Customer Side (Mobile-First)
+- **No login required.** Customers scan the QR code at their table and start ordering.
+- **Menu categories and search.** Browse main categories, subcategories, and Best Seller picks.
+- **Flexible variations.** Pick size, sweetness level, or extra toppings, and the price updates to match.
+- **Local shopping cart.** The cart lives on the customer's device, in encrypted localStorage.
+- **Flexible payment.** Pay with Cash or Static QRIS, with clear instructions for either method.
+
+### 💻 Cashier / Admin Side (Desktop-First)
+- **Real-time order dashboard.** The active order list refreshes every 10 seconds through polling, with sound and visual alerts for new orders.
+- **Takeaway order management.** Cashiers enter walk-in orders through the built-in point of sale.
+- **Dynamic payment confirmation.** The system calculates change for cash payments and confirms QRIS payments in one click.
+- **Menu and variation CRUD.** Manage products, images, categories, stock, per-item discounts, and variation options from one screen.
+- **Table management and QR generator.** Generate a QR code for a new table and download it in high resolution.
+- **Visual sales reports.** Track sales, revenue, and best-selling items by day, week, or month on interactive charts.
+
+---
+
+## 🛠️ Tech Stack & Architecture
+
+| Layer | Technology |
+|---|---|
+| **Backend** | Laravel 12 (PHP 8.2+) with Eloquent ORM |
+| **Frontend** | React 18 & TypeScript |
+| **SPA Bridge** | Inertia.js 2.x (connects Laravel and React without a separate REST/GraphQL API) |
+| **Styling & UI** | Tailwind CSS & shadcn/ui (built on Radix UI primitives) |
+| **Database** | MySQL 8.x |
+| **Package Manager & Runtime** | Bun |
+| **Data Visualization** | Recharts |
+| **QR Code Generator** | `chillerlan/php-qrcode` |
+
+### Data Flow Architecture
 
 ```mermaid
 graph LR
-    subgraph "Pelanggan (Mobile Device)"
-        A["Browser HP"] -->|Scan QR Meja| B["React Component (Customer)"]
+    subgraph "Customer (Mobile Device)"
+        A["Phone Browser"] -->|Scan Table QR| B["React Component (Customer)"]
     end
 
-    subgraph "Kasir (Desktop Browser)"
-        C["Browser Desktop"] --> D["React Component (Dashboard Admin)"]
+    subgraph "Cashier (Desktop Browser)"
+        C["Desktop Browser"] --> D["React Component (Admin Dashboard)"]
     end
 
     subgraph "Inertia.js Bridge"
@@ -65,120 +76,122 @@ graph LR
         E --> F["Controllers & Form Requests"]
         F --> G["Eloquent Models / Database Layer"]
         G --> H[("MySQL Database")]
-        F --> I["Storage Disk (Foto Menu & QR)"]
+        F --> I["Storage Disk (Menu Photos & QR Codes)"]
     end
 
-    D -.->|HTTP Polling 10 detik| F
+    D -.->|HTTP Polling every 10s| F
 ```
 
 ---
 
-## 🚀 Panduan Instalasi & Pengaturan
+## 🚀 Installation Guide
 
-Ikuti langkah-langkah berikut untuk menjalankan proyek di komputer lokal Anda:
+Follow these steps to run Ordio on your local machine.
 
-### Prasyarat
-Pastikan Anda sudah menginstal alat-alat berikut:
+### Prerequisites
+Install the following before you start:
 - PHP >= 8.2
 - Composer
-- Node.js / Bun (Sangat direkomendasikan menggunakan Bun)
+- Node.js / Bun (Bun is recommended)
 - MySQL Server
 
-### Langkah-langkah Pengaturan
+### Setup Steps
 
-1. **Kloning Repositori:**
+1. **Clone the repository:**
    ```bash
-   git clone https://github.com/checamaulana/sistem-pemesanan-qr.git
-   cd sistem-pemesanan-qr
+   git clone https://github.com/yourusername/ordio.git
+   cd ordio
    ```
 
-2. **Instal Dependensi Backend (PHP):**
+2. **Install backend dependencies (PHP):**
    ```bash
    composer install
    ```
 
-3. **Instal Dependensi Frontend (JavaScript/TypeScript):**
-   Menggunakan Bun:
+3. **Install frontend dependencies (JavaScript/TypeScript):**
+   Using Bun:
    ```bash
    bun install
    ```
-   Atau menggunakan NPM:
+   Or using NPM:
    ```bash
    npm install
    ```
 
-4. **Konfigurasi Lingkungan (`.env`):**
-   Salin file konfigurasi contoh dan buat file `.env` baru:
+4. **Configure the environment (`.env`):**
+   Copy the example config file to create a new `.env` file:
    ```bash
    cp .env.example .env
    ```
-   Buka file `.env` dan sesuaikan pengaturan koneksi database Anda:
+   Open `.env` and set your database connection:
    ```env
    DB_CONNECTION=mysql
    DB_HOST=127.0.0.1
    DB_PORT=3306
-   DB_DATABASE=kopi_tempo
+   DB_DATABASE=ordio
    DB_USERNAME=root
    DB_PASSWORD=
    ```
 
-5. **Generate Application Key:**
+5. **Generate the application key:**
    ```bash
    php artisan key:generate
    ```
 
-6. **Jalankan Migrasi Database & Seeder:**
-   Perintah ini akan membuat semua tabel yang dibutuhkan beserta akun admin default dan data menu awal:
+6. **Run database migrations and seeders:**
+   This creates the required tables plus a default admin account and starter menu data:
    ```bash
    php artisan migrate --seed
    ```
 
-7. **Hubungkan Storage:**
-   Buat symbolic link agar file gambar menu dan QR code dapat diakses oleh publik:
+7. **Link storage:**
+   Create a symbolic link so menu images and QR codes are publicly accessible:
    ```bash
    php artisan storage:link
    ```
 
-8. **Jalankan Server:**
-   Jalankan server backend Laravel (di terminal pertama):
+8. **Start the servers:**
+   Run the Laravel backend (first terminal):
    ```bash
    php artisan serve
    ```
-   Jalankan server pengembangan frontend (di terminal kedua):
-   Menggunakan Bun:
+   Run the frontend dev server (second terminal):
+   Using Bun:
    ```bash
    bun run dev
    ```
-   Atau menggunakan NPM:
+   Or using NPM:
    ```bash
    npm run dev
    ```
 
 ---
 
-## 🔑 Kredensial Login Default
+## 🔑 Default Login Credentials
 
-Gunakan kredensial berikut untuk masuk ke dashboard kasir setelah melakukan seeder database:
-- **Halaman Login:** `http://localhost:8000/login`
+Use these credentials to log in to the cashier dashboard after seeding the database:
+- **Login page:** `http://localhost:8000/login`
 - **Username:** `admin`
 - **Password:** `password`
 
-Untuk mengakses menu pelanggan, simulasikan pemindaian QR Code meja dengan membuka URL berikut di browser Anda:
-- `http://localhost:8000/meja/1/menu` (untuk Meja nomor 1)
+> ⚠️ Change these credentials before you deploy to production.
+
+To view the customer menu, simulate a table QR scan by opening this URL in your browser:
+- `http://localhost:8000/meja/1/menu` (for Table No. 1)
 
 ---
 
-## 🧪 Pengujian (Testing)
+## 🧪 Testing
 
-Aplikasi ini dilengkapi dengan suite pengujian komprehensif menggunakan **Pest PHP** untuk memastikan keandalan alur bisnis pemesanan:
+Ordio uses **Pest PHP** to test the core ordering workflows.
 
-Jalankan semua pengujian dengan perintah:
+Run the full suite with:
 ```bash
 php artisan test
 ```
 
 ---
 
-## 📄 Lisensi
+## 📄 License
 
-Proyek ini dilisensikan di bawah lisensi MIT. Lihat file [LICENSE](LICENSE) untuk informasi lebih lanjut.
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
