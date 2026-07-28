@@ -1,13 +1,15 @@
 # Ordio - QR Code Ordering System
 
-[![Laravel Version](https://img.shields.io/badge/Laravel-12.x-red.svg)](https://laravel.com)
-[![React Version](https://img.shields.io/badge/React-18.x-blue.svg)](https://react.dev)
-[![Inertia.js Version](https://img.shields.io/badge/Inertia.js-2.x-purple.svg)](https://inertiajs.com)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)](https://www.typescriptlang.org)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.x-38bdf8.svg)](https://tailwindcss.com)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=flat&logo=laravel&logoColor=white)](https://laravel.com)
+[![React](https://img.shields.io/badge/React-18.x-61DAFB?style=flat&logo=react&logoColor=black)](https://react.dev)
+[![Inertia.js](https://img.shields.io/badge/Inertia.js-2.x-9553E9?style=flat&logo=inertia&logoColor=white)](https://inertiajs.com)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.x-38BDF8?style=flat&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![PHP](https://img.shields.io/badge/PHP-8.2%2B-777BB4?style=flat&logo=php&logoColor=white)](https://www.php.net)
+[![MySQL](https://img.shields.io/badge/MySQL-8.x-4479A1?style=flat&logo=mysql&logoColor=white)](https://www.mysql.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat)](LICENSE)
 
-**Ordio** is a QR code ordering system for restaurants and cafés. It runs a **Laravel** backend and a **React** frontend through the **Inertia.js v2** bridge. Customers order from their phones without installing anything. Staff run the floor from one dashboard.
+**Ordio** is a QR code ordering system for restaurants and cafe. It runs a **Laravel** backend and a **React** frontend through the **Inertia.js v2** bridge. Customers order from their phones without installing anything. Staff run the floor from one dashboard.
 
 ---
 
